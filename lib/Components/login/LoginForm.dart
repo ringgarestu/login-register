@@ -49,8 +49,8 @@ class _SignInform extends State<SignInform> {
             ],
           ),
           DefaultButtonCustomeColor(
-            color: kPrimaryColor,
-            text: "MASUK",
+            color: Color(0xFF3EB2FF),
+            text: "Login",
             press: () {},
           ),
           SizedBox(
@@ -74,31 +74,61 @@ class _SignInform extends State<SignInform> {
       keyboardType: TextInputType.text,
       style: mTitleStyle,
       decoration: InputDecoration(
-          labelText: 'Username',
-          hintText: 'Masukan Username anda',
-          labelStyle: TextStyle(
-              color: focusNode.hasFocus ? mSubtitleColor : kPrimaryColor),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffixIcon(
-            svgIcon: "assets/icons/User.svg",
-          )),
+        // labelText: 'Username',
+        hintText: 'Username',
+        labelStyle: TextStyle(
+            color: focusNode.hasFocus ? mSubtitleColor : kPrimaryColor),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        // suffixIcon: CustomSurffixIcon(
+        //   svgIcon: "assets/icons/User.svg",
+        // )
+      ),
     );
   }
+
+  // TextEditingController txtPassword = TextEditingController();
+  bool isPasswordVisible = false;
 
   TextFormField buildPassword() {
     return TextFormField(
       controller: txtPassword,
-      obscureText: true,
+      obscureText: !isPasswordVisible,
       style: mTitleStyle,
       decoration: InputDecoration(
-          labelText: 'Password',
-          hintText: 'Masukan Password anda',
-          labelStyle: TextStyle(
-              color: focusNode.hasFocus ? mSubtitleColor : kPrimaryColor),
-          floatingLabelBehavior: FloatingLabelBehavior.always,
-          suffixIcon: CustomSurffixIcon(
-            svgIcon: "assets/icons/User.svg",
-          )),
+        hintText: 'Password',
+        labelStyle: TextStyle(
+          color: focusNode.hasFocus ? mSubtitleColor : kPrimaryColor,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: IconButton(
+          icon: Icon(
+            isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+            color: kPrimaryColor,
+          ),
+          onPressed: () {
+            setState(() {
+              isPasswordVisible = !isPasswordVisible;
+            });
+          },
+        ),
+      ),
     );
   }
+
+  // TextFormField buildPassword() {
+  //   return TextFormField(
+  //     controller: txtPassword,
+  //     obscureText: true,
+  //     style: mTitleStyle,
+  //     decoration: InputDecoration(
+  //       // labelText: 'Password',
+  //       hintText: 'Password',
+  //       labelStyle: TextStyle(
+  //           color: focusNode.hasFocus ? mSubtitleColor : kPrimaryColor),
+  //       floatingLabelBehavior: FloatingLabelBehavior.always,
+  //       // suffixIcon: CustomSurffixIcon(
+  //       //   svgIcon: "assets/icons/User.svg",
+  //     ),
+  //   );
+  // }
 }
